@@ -1,6 +1,5 @@
 #include <Arduino.h>
 
-typedef void (Buzzer::*PitchFunc)(int);
 
 struct Buzzer {
   int pin;

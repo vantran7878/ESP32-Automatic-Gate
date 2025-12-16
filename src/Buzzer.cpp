@@ -11,7 +11,7 @@ void Buzzer::high_pitch(int duration) {
 }
 
 void Buzzer::low_pitch(int duration) {
-  tone(pin, 1000, duration);
+  tone(pin, 500, duration);
 }
 
 void Buzzer::no_sound() {

@@ -8,13 +8,11 @@ void Led::init() {
 }
 
 void Led::light_red() {
-  if (activate) digitalWrite(red_pin, HIGH);
-  digitalWrite(red_pin, LOW);
+  digitalWrite(red_pin, HIGH);
 } 
 
 void Led::light_green() {
-  if (activate) digitalWrite(green_pin, HIGH);
-  digitalWrite(green_pin, LOW);
+  digitalWrite(green_pin, HIGH);
 } 
 
 void Led::no_light() {

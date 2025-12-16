@@ -18,10 +18,11 @@ int Ultrasonic::get_distance() {
   long duration = pulseIn(echo_pin, HIGH);
 
   int distance = duration * 0.034 / 2;
+  return distance;
 }
 
 bool Ultrasonic::is_violate() {
   int distance = get_distance();
-  if (distance < 10) return true;
+  if (distance < 6) return true;
   return false;
 }
