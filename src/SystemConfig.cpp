@@ -28,3 +28,5 @@ void SystemConfig::always_close_run() {
   camera = 1;
   led = 1;
 }
+
+extern SystemConfig g_config;
