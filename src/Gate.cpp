@@ -1,4 +1,5 @@
 #include "Gate.h"
+#include "SystemConfig.h"
 
 Gate::Gate(int pin):pin(pin), state(GATE_OPEN), timer(0) , angle(0){
 }
@@ -8,6 +9,7 @@ void Gate::attach() {
 }
 
 void Gate::open() {
+  if (!g_config.servo) return;
   if (angle != GATE_OPEN_ANGLE) {
     servo.write(GATE_OPEN_ANGLE);
     Serial.println("gate open");

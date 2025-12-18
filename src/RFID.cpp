@@ -1,4 +1,5 @@
 #include "RFID.h"
+#include "SystemConfig.h"
 
 RFID::RFID(uint8_t ssPin, uint8_t rstPin)
     : _ssPin(ssPin),
@@ -21,6 +22,7 @@ Card RFID::get_ID() {
 }
 
 bool RFID::is_read() {
+  if (!g_config.rfid) return false;
   if (!mfrc522.PICC_IsNewCardPresent()) return false;
   if (!mfrc522.PICC_ReadCardSerial()) return false;
 

@@ -17,6 +17,7 @@ struct SystemConfig {
     void normal_run();
     void always_open_run();
     void always_close_run();
+    bool is_state_change(SystemConfig new_state);
 };
 
 extern SystemConfig g_config;

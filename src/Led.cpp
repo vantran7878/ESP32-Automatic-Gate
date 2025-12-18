@@ -1,5 +1,7 @@
 #include <Arduino.h>
 #include "Led.h"
+#include "SystemConfig.h"
+
 Led::Led(int red, int green): red_pin(red), green_pin(green) {}
 
 void Led::init() {
@@ -8,11 +10,15 @@ void Led::init() {
 }
 
 void Led::light_red() {
-  digitalWrite(red_pin, HIGH);
+  if (g_config.led) {
+    digitalWrite(red_pin, HIGH);
+  }
 } 
 
 void Led::light_green() {
-  digitalWrite(green_pin, HIGH);
+  if (g_config.led) {
+    digitalWrite(green_pin, HIGH);
+  }
 } 
 
 void Led::no_light() {

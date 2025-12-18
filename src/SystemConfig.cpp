@@ -29,4 +29,14 @@ void SystemConfig::always_close_run() {
   led = 1;
 }
 
-extern SystemConfig g_config;
+bool SystemConfig::is_state_change(SystemConfig new_state) {
+  if (system_state != new_state.system_state) return true;
+  if (rfid != new_state.rfid) return true;
+  if (ultrasonic != new_state.ultrasonic) return true;
+  if (buzzer != new_state.buzzer) return true;
+  if (servo != new_state.servo) return true;
+  if (camera != new_state.camera) return true;
+  if (led != new_state.led) return true;
+
+  return false;
+}
