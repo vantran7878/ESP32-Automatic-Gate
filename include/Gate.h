@@ -1,7 +1,7 @@
 #include <ESP32Servo.h>
 
 const int GATE_OPEN_DURATION = 1000;
-const int GATE_OPEN_ANGLE = 90;
+const int GATE_OPEN_ANGLE = 70;
 const int GATE_CLOSE_ANGLE = 0;
 
 enum GATE_STATE {
@@ -17,7 +17,7 @@ struct Gate {
 
   Servo servo;
   Gate(int pin);
-  void attach();
+  void init();
   void open();
   void close();
 };

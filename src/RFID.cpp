@@ -6,7 +6,7 @@ RFID::RFID(uint8_t ssPin, uint8_t rstPin)
       _rstPin(rstPin),
       mfrc522(ssPin, rstPin) {}
 
-void RFID::begin() {
+void RFID::init() {
     // ESP32 SPI pins: SCK=18, MISO=19, MOSI=23, SS=_ssPin
     SPI.begin(18, 19, 23, _ssPin);
     mfrc522.PCD_Init();

@@ -4,7 +4,7 @@
 Gate::Gate(int pin):pin(pin), state(GATE_OPEN), timer(0) , angle(0){
 }
 
-void Gate::attach() {
+void Gate::init() {
   servo.attach(pin);
 }
 

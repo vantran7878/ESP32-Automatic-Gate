@@ -13,6 +13,7 @@ struct SystemConfig {
     bool servo;
     bool camera;
     bool led;
+    bool violation;
 
     void normal_run();
     void always_open_run();

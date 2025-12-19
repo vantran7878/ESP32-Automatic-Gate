@@ -20,7 +20,7 @@ struct RFID {
 
   RFID(uint8_t ssPin, uint8_t rstPin);
 
-  void begin();
+  void init();
   void update_state(bool state);
   Card get_ID();
   bool is_read();

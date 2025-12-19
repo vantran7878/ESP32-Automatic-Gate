@@ -1,6 +1,10 @@
 #include "MQTT_connect.h"
 #include <Arduino.h>
 #include "SystemConfig.h"
+#include "Statistic.h"
+
+extern SystemConfig g_config;
+extern Statistic statistic;
 
 
 WiFiClientSecure wifiClient;
@@ -44,7 +48,6 @@ void mqtt_connect() {
     }
   }
 }
-extern SystemConfig g_config;
 
 void parseSystemJson(const char* json) {
   StaticJsonDocument<256> doc;
@@ -62,6 +65,7 @@ void parseSystemJson(const char* json) {
   g_config.servo      = doc["devices"]["servo"] | g_config.servo;
   g_config.camera     = doc["devices"]["camera"] | g_config.camera;
   g_config.led        = doc["devices"]["led"] | g_config.led;
+  g_config.violation  = doc["deactivate"]["violation"] | g_config.violation;
 }
 
 //MQTT Receiver
@@ -114,6 +118,8 @@ void mqtt_upload_violate() {
   char buffer[256];
   doc["event"] = "gate_event";
   doc["result"] = "violated";
+  doc["violators"] = statistic.violator;
+  doc["passes"] = statistic.normal;
 
   serializeJson(doc, buffer);
   mqttClient.publish(upload_topic, buffer);
